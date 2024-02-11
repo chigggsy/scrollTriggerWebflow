@@ -1,8 +1,12 @@
-import animateTitle from './features/animateTitle'
-import createBadge from './features/createBasge'
+import gsap from 'gsap'
 import './styles/style.css'
 
-console.log('Welcome to Vite + JS + Webflow!')
+const imageReveal_tl = gsap.timeline({
+  defaults: {
+    ease: 'power4.inOut',
+  },
+})
 
-createBadge()
-animateTitle()
+imageReveal_tl
+  .from('.image_wrapper', { duration: 2, height: 0, y: 312.5 }, 0)
+  .from('img', { duration: 2.5, scale: 3, transformOrigin: '50% 0%' }, 0)
