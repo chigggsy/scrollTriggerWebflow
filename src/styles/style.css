@@ -1,7 +1,6 @@
-.section {
-  /* background: lightcoral; */
+img {
+  object-position: 50% 100%;
 }
 
-.image_gallery {
-  /* background: lightblue; */
+section.section.is-hero {
 }
