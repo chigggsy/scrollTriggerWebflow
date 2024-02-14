@@ -4,18 +4,23 @@ import './styles/style.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const imageReveal_tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.image_gallery',
-    start: 'top 90%',
-    toggleActions: 'play none none reverse',
-    markers: true,
-  },
-  defaults: {
-    ease: 'power4.inOut',
-  },
-})
+const imageWrapperList = gsap.utils.toArray('.image_wrapper')
+imageWrapperList.forEach((imageWrapper) => {
+  const imageReveal_tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: imageWrapper,
+      start: 'top 90%',
+      toggleActions: 'play none none none',
+      markers: true,
+    },
+    defaults: {
+      ease: 'power4.inOut',
+    },
+  })
 
-imageReveal_tl
-  .from('.image_wrapper', { duration: 1.5, height: 0, y: 312.5 }, 0)
-  .from('img', { duration: 2, scale: 3, transformOrigin: '50% 0%' }, 0)
+  const image = imageWrapper.querySelector('img')
+
+  imageReveal_tl
+    .from(imageWrapper, {}, 0)
+    .from(image, { duration: 2, scale: 2, transformOrigin: '50% 50%' }, 0)
+})
