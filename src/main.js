@@ -2,7 +2,7 @@
 import gsap from 'gsap'
 import { CustomEase } from 'gsap/all'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SplitType from 'split-type'
+// import SplitType from 'split-type'
 import './styles/style.css'
 
 // Registering plugins
@@ -10,31 +10,30 @@ gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(CustomEase)
 
 // Functions
-/*const imageRevealOnScroll = () => {
+const imageRevealOnScroll = () => {
   const imageWrapperList = gsap.utils.toArray('.image_wrapper')
 
   imageWrapperList.forEach((imageWrapper) => {
-    const image = imageWrapper.querySelector('img')
+    // const image = imageWrapper.querySelector('img')
     const imageReveal_tl = gsap.timeline({
       defaults: {
-        ease: 'power2.inOut',
+        ease: 'none',
       },
       scrollTrigger: {
         trigger: imageWrapper,
-        toggleActions: 'play none none none',
-        start: 'top 80%',
+        start: 'top bottom',
+        end: 'top top',
         markers: true,
+        scrub: true,
       },
     })
-    imageReveal_tl
-      .from(image, { duration: 1.8, height: 0 }, 0)
-      .from(image, { duration: 1.8, scale: 4 }, 0)
+    imageReveal_tl.fromTo(imageWrapper, { opacity: 0 }, { opacity: 100 }, 0)
   })
-} */
+}
 
+/*
 const textRevealOnScroll = () => {
   CustomEase.create('ease_pz', 'M0,0 C0,0.24 0.08,1 1,1 ')
-
   const characterDescriptionList = gsap.utils.toArray('.character_description')
 
   characterDescriptionList.forEach((characterDescription) => {
@@ -58,24 +57,25 @@ const textRevealOnScroll = () => {
         opacity: 0,
       },
       scrollTrigger: {
-        trigger: '.character_description',
+        trigger: characterDescription,
         toggleActions: 'play none none none',
-        start: 'top 20%',
+        start: 'top 50%',
         markers: true,
       },
     })
 
     textReveal_tl
-      .from(st_heading.chars, { duration: 1, y: 30, stagger: 0.015 }, 0)
-      .from(st_para.lines, { duration: 1.5, y: 30, stagger: 0.03 }, 0.2)
       .from(
         tag,
-        { duration: 1.5, y: 15, stagger: { each: 0.1, from: 'start' } },
+        { duration: 1, y: 15, stagger: { each: 0.1, from: 'start' } },
         0
       )
+      .from(st_heading.chars, { duration: 1, y: 30, stagger: 0.02 }, 0.2)
+      .from(st_para.lines, { duration: 1.5, y: 30, stagger: 0.03 }, 0.3)
   })
 }
 
+*/
 // Calling functions
-// imageRevealOnScroll()
-textRevealOnScroll()
+imageRevealOnScroll()
+// textRevealOnScroll()

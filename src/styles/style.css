@@ -2,5 +2,6 @@ img {
   object-position: 50% 100%;
 }
 
-section.section.is-hero {
-}
+/* section.section.is-hero {
+  display: none;
+} */
